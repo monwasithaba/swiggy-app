@@ -31,9 +31,9 @@ resource "aws_security_group" "my-ec2" {
 
 
 resource "aws_instance" "web" {
-  ami                    = "ami-03f4878755434977f" # change your ami name 
-  instance_type          = "t2.medium"
-  key_name               = "my key"
+  ami                    = "ami-0e6f31bc3ded5c38a" # change your ami name 
+  instance_type          = "t3.medium"
+  key_name               = "monwa-key"
   vpc_security_group_ids = [aws_security_group.my-ec2.id]
   user_data              = templatefile("./script.sh", {})
 
@@ -41,6 +41,6 @@ resource "aws_instance" "web" {
     Name = "swiggy-base-server"
   }
   root_block_device {
-    volume_size = 30
+    volume_size = 20
   }
 }
