@@ -22,7 +22,7 @@ jobs:
         
       - name: Docker build and push
         run: |
-          # Run commands to build and push Docker images
+          # Run commands to build and push Docker images #
           docker build -t swiggy-clone .
           docker tag swiggy-clone:latest msithaba/swiggy-clone:latest
           docker login -u ${{ secrets.Dockerhub_username }} -p ${{ secrets.Dockerhub_token }}
