@@ -23,10 +23,10 @@ jobs:
       - name: Docker build and push
         run: |
           # Run commands to build and push Docker images #
-          docker build -t swiggy-clone .
-          docker tag swiggy-clone:latest msithaba/swiggy-clone:latest
+          #docker build -t swiggy-clone .
+          #docker tag swiggy-clone:latest msithaba/swiggy-clone:latest
           docker login -u msithaba -p Monwa5595
-          docker push msithaba/swiggy-clone:latest
+          #docker push msithaba/swiggy-clone:latest
         env:
           DOCKER_CLI_ACI: 1
           
@@ -34,12 +34,12 @@ jobs:
    needs: build
    runs-on: [self-hosted]
    steps:
-      - name: docker pull image
-        run: docker pull msithaba/swiggy-clone:latest
-      - name: Image scan
-        run: trivy image msithaba/swiggy-clone:latest > trivyimagedeploy.txt
-      - name: Deploy to container
-        run: docker run -d --name swiggy-clone -p 3000:3000 msithaba/swiggy-clone:latest
+      #- name: docker pull image
+        #run: docker pull msithaba/swiggy-clone:latest
+      #- name: Image scan
+        #run: trivy image msithaba/swiggy-clone:latest > trivyimagedeploy.txt
+      #- name: Deploy to container
+        #run: docker run -d --name swiggy-clone -p 3000:3000 msithaba/swiggy-clone:latest
 
       - name: Update kubeconfig
         run: aws eks --region eu-north-1 update-kubeconfig --name EKS_CLOUD
